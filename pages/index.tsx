@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
-import { RecordType } from "../types/records";
+import { RecordType } from "../types/record";
 
 export default function Home({
   records,
