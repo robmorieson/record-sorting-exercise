@@ -14,17 +14,46 @@ type FieldProps = {
 const Card = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 20px 20px 0 20px;
+  margin: 20px 0 0 0;
+  background: var(--color-bg-secondary);
 `;
 
 const Field = styled.div<FieldProps>`
-  flex: ${(p) => (p.span === "full" ? "100%" : "50%")};
+  flex: ${(p) => (p.span === "full" ? "auto" : "50%")};
+  margin-bottom: 20px;
 `;
 
-const Label = styled.small``;
+const Label = styled.small`
+  text-transform: uppercase;
+  font-size: 0.75rem;
+`;
 
-const Data = styled.div``;
+const Data = styled.div`
+  font-weight: 800;
+  color: var(--color-text-secondary);
+`;
 
-const Button = styled.button``;
+const Button = styled.button`
+  margin: 20px 0;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  &:focus {
+    outline-offset: 5px;
+  }
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  span {
+    border-bottom: 2px solid var(--color-text-secondary);
+  }
+`;
 
 const Expandable = styled.div`
   flex: 100%;
@@ -54,7 +83,7 @@ export const Record = ({ record }: Props) => {
         aria-expanded={expanded}
         onClick={() => setExpanded(!expanded)}
       >
-        View Details
+        <span>{`${expanded ? "Hide Details" : "View Details"}`}</span>
       </Button>
       <Expandable
         id={`record-expandable-${record["_id"]}`}

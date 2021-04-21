@@ -1,10 +1,29 @@
 import { useState } from "react";
 import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
+import styled from "@emotion/styled";
 
 import { RecordType } from "../types/record";
 import { Records } from "../components/Records";
 import { SortButton } from "../components/SortButton";
+
+const Container = styled.div`
+  margin: 40px;
+`;
+
+const Content = styled.main`
+  margin: auto;
+  max-width: 650px;
+`;
+
+const SortButtons = styled.div`
+  margin: 0 0 20px 0;
+  small {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+`;
 
 export default function Home({
   records,
@@ -20,14 +39,17 @@ export default function Home({
     setSortField(fieldName);
   };
   return (
-    <div>
+    <Container>
       <Head>
         <title>Record Sorting Exercise</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div>
-          <span>Sort by</span>
+      <Content>
+        <header>
+          <h1>Record Sorting Exercise</h1>
+        </header>
+        <SortButtons>
+          <small>Sort by</small>
           <SortButton
             fieldName="Suburb - Incident"
             sortOrder={sortOrder}
@@ -44,14 +66,14 @@ export default function Home({
           >
             Offence Level 2
           </SortButton>
-        </div>
+        </SortButtons>
         <Records
           records={records}
           sortField={sortField}
           sortOrder={sortOrder}
         />
-      </main>
-    </div>
+      </Content>
+    </Container>
   );
 }
 
