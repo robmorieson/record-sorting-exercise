@@ -24,6 +24,7 @@ export const SortButton: React.FC<Props> = ({
 }) => {
   return (
     <Button
+      data-testid={fieldName}
       sortOrder={sortOrder}
       sortField={sortField}
       onClick={() => {
