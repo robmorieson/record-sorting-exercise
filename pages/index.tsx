@@ -1,13 +1,24 @@
+import { useState } from "react";
 import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
 import { RecordType } from "../types/record";
 import { Records } from "../components/Records";
+import { SortButton } from "../components/SortButton";
 
 export default function Home({
   records,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(records);
+  const [sortField, setSortField] = useState("Suburb - Incident");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const handleSortClick = (fieldName: string) => {
+    if (sortField === fieldName) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortOrder("asc");
+    }
+    setSortField(fieldName);
+  };
   return (
     <div>
       <Head>
@@ -15,7 +26,30 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Records records={records} />
+        <div>
+          <span>Sort by</span>
+          <SortButton
+            fieldName="Suburb - Incident"
+            sortOrder={sortOrder}
+            sortField={sortField}
+            handleSortClick={handleSortClick}
+          >
+            Suburb
+          </SortButton>
+          <SortButton
+            fieldName="Offence Level 2 Description"
+            sortOrder={sortOrder}
+            sortField={sortField}
+            handleSortClick={handleSortClick}
+          >
+            Offence Level 2
+          </SortButton>
+        </div>
+        <Records
+          records={records}
+          sortField={sortField}
+          sortOrder={sortOrder}
+        />
       </main>
     </div>
   );
