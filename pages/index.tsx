@@ -2,6 +2,7 @@ import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
 import { RecordType } from "../types/record";
+import { Records } from "../components/Records";
 
 export default function Home({
   records,
@@ -13,7 +14,9 @@ export default function Home({
         <title>Record Sorting Exercise</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main></main>
+      <main>
+        <Records records={records} />
+      </main>
     </div>
   );
 }
