@@ -2,6 +2,7 @@
   "name": "record-sorting-exercise",
   "version": "0.1.0",
   "private": true,
+  "author": "Rob Morieson <rob@electricanimals.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
