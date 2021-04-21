@@ -42,6 +42,10 @@ export default function Home({
     <Container>
       <Head>
         <title>Record Sorting Exercise</title>
+        <meta
+          name="description"
+          content="Demonstrating knowledge of React, fetching and testing"
+        ></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Content>
