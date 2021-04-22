@@ -23,6 +23,9 @@ const Card = styled.div`
 const Field = styled.div<FieldProps>`
   flex: ${(p) => (p.span === "full" ? "auto" : "50%")};
   margin-bottom: 20px;
+  &.date {
+    text-align: right;
+  }
 `;
 
 const Label = styled.small`
@@ -37,12 +40,11 @@ const Data = styled.div`
 
 const Button = styled.button`
   flex: 100%;
-  max-width: fit-content;
   margin: 0 0 20px 0;
   padding: 0;
   font-size: 0.85rem;
   font-weight: 800;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
   border: none;
   background: transparent;
@@ -78,7 +80,7 @@ export const Record = ({ record, isExpanded, setExpandedId }: Props) => {
           {record["Suburb - Incident"]}, {record["Postcode - Incident"]}
         </Data>
       </Field>
-      <Field span="half">
+      <Field span="half" className="date">
         <Label>Reported Date</Label>
         <Data>{record["Reported Date"]}</Data>
       </Field>
