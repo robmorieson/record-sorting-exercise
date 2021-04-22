@@ -1,10 +1,11 @@
-import { useState } from "react";
 import styled from "@emotion/styled";
 
 import { RecordType } from "../types/record";
 
 type Props = {
   record: RecordType;
+  isExpanded: boolean;
+  setExpandedId: (text: number) => void;
 };
 
 type FieldProps = {
@@ -59,8 +60,7 @@ const Expandable = styled.div`
   flex: 100%;
 `;
 
-export const Record = ({ record }: Props) => {
-  const [expanded, setExpanded] = useState(false);
+export const Record = ({ record, isExpanded, setExpandedId }: Props) => {
   return (
     <Card data-testid="record">
       <Field span="half">
@@ -80,15 +80,15 @@ export const Record = ({ record }: Props) => {
       <Button
         id={`record-btn-${record["_id"]}`}
         aria-controls={`record-expandable-${record["_id"]}`}
-        aria-expanded={expanded}
-        onClick={() => setExpanded(!expanded)}
+        aria-expanded={isExpanded}
+        onClick={() => setExpandedId(isExpanded ? 0 : record["_id"])}
       >
-        <span>{`${expanded ? "Hide Details" : "View Details"}`}</span>
+        <span>{`${isExpanded ? "Hide Details" : "View Details"}`}</span>
       </Button>
       <Expandable
         id={`record-expandable-${record["_id"]}`}
         aria-labelledby={`record-btn-${record["_id"]}`}
-        hidden={!expanded}
+        hidden={!isExpanded}
       >
         <Field span="full">
           <Label>Offence count</Label>
