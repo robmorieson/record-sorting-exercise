@@ -16,7 +16,7 @@ type ButtonProps = {
 
 const Button = styled.button<ButtonProps>`
   position: relative;
-  margin: 0 15px 0 0;
+  margin: 0 30px 0 0;
   padding: 5px 0;
   font-size: 1.25rem;
   font-weight: 800;
@@ -33,9 +33,9 @@ const Button = styled.button<ButtonProps>`
   &:after {
     content: "${(p) => (p.sortOrder === "asc" ? "↓" : "↑")}";
     visibility: ${(p) => (p.isActive ? "visible" : "hidden")};
-    position: relative;
-    top: -2px;
-    margin-left: 5px;
+    position: absolute;
+    top: 4px;
+    width: 15px;
   }
   span {
     border-bottom: ${(p) =>

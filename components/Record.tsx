@@ -36,10 +36,13 @@ const Data = styled.div`
 `;
 
 const Button = styled.button`
-  margin: 20px 0;
+  flex: 100%;
+  max-width: fit-content;
+  margin: 0 0 20px 0;
   padding: 0;
   font-size: 0.85rem;
   font-weight: 800;
+  text-align: left;
   text-transform: uppercase;
   border: none;
   background: transparent;
@@ -51,8 +54,14 @@ const Button = styled.button`
   &:focus:not(:focus-visible) {
     outline: none;
   }
+  @media (min-width: 768px) {
+    flex: auto;
+    margin: 20px 0;
+    text-align: right;
+  }
   span {
-    border-bottom: 2px solid var(--color-text-secondary);
+    display: inline-block;
+    border-bottom: 2px solid;
   }
 `;
 
