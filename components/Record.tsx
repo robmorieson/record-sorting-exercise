@@ -50,6 +50,9 @@ const Button = styled.button`
   background: transparent;
   color: var(--color-text-secondary);
   cursor: pointer;
+  &:hover {
+    color: var(--color-text-highlight);
+  }
   &:focus {
     outline-offset: 5px;
   }

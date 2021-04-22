@@ -3,6 +3,7 @@
   --color-bg-secondary: hsl(204, 28%, 93%);
   --color-text-primary: hsl(210, 4%, 11%);
   --color-text-secondary: hsl(176, 10%, 28%);
+  --color-text-highlight: hsl(0, 55%, 42%);
 }
 
 html,

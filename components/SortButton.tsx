@@ -24,6 +24,9 @@ const Button = styled.button<ButtonProps>`
   background: transparent;
   color: var(--color-text-primary);
   cursor: pointer;
+  &:hover {
+    color: var(--color-text-highlight);
+  }
   &:focus {
     outline-offset: 5px;
   }
@@ -38,8 +41,7 @@ const Button = styled.button<ButtonProps>`
     width: 15px;
   }
   span {
-    border-bottom: ${(p) =>
-      p.isActive ? "2px solid var(--color-text-secondary)" : "none"};
+    border-bottom: 2px solid;
   }
 `;
 
@@ -52,6 +54,7 @@ export const SortButton: React.FC<Props> = ({
 }) => {
   return (
     <Button
+      aria-label={`Sort by ${fieldName}`}
       isActive={sortField === fieldName && true}
       data-testid={fieldName}
       sortOrder={sortOrder}
