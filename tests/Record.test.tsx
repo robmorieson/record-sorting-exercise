@@ -7,7 +7,16 @@ import { records } from "./test-data";
 describe("<Record />", () => {
   test("Initially only primary data visible; expanded data hidden", () => {
     const record = records[0];
-    const { getByText } = render(<Record record={record} />);
+    const isExpanded = false;
+    const setExpandedId = jest.fn();
+
+    const { getByText } = render(
+      <Record
+        record={record}
+        isExpanded={isExpanded}
+        setExpandedId={setExpandedId}
+      />
+    );
 
     const suburb = getByText(record["Suburb - Incident"], { exact: false });
     const postcode = getByText(record["Postcode - Incident"], { exact: false });
